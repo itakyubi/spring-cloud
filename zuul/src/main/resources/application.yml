@@ -1,9 +1,9 @@
 server:
-  port: 7999
+  port: 7003
 
 spring:
   application:
-    name: eureka-client
+    name: zuul-gateway
 
 eureka:
   client:
@@ -15,3 +15,11 @@ eureka:
       #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。
       #defaultZone: http://eureka-server01:7001/eureka/,http://eureka-server02:7002/eureka/
       defaultZone: http://eureka-server01:7001/eureka/
+
+zuul:
+  routes:
+    app:
+      # 满足path的请求，路由到url地址或者serviceId
+      path: /api/v1/apps/**
+      url: localhost:7999/v1/apps
+      serviceId: eureka-client
