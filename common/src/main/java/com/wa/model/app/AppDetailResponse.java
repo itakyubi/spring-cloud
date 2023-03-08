@@ -1,4 +1,4 @@
-package com.wa.controller.response;
+package com.wa.model.app;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,0 +1,6 @@
+server:
+  port: 7998
+
+spring:
+  application:
+    name: feign
