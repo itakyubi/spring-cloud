@@ -1,5 +1,6 @@
 package com.wa.feign;
 
+import com.wa.feign.fallback.AppFeignHystrix;
 import com.wa.model.app.AppAddRequest;
 import com.wa.model.app.AppDetailResponse;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author wuao
  */
 
-@FeignClient(name = "feign", url = "http://localhost:7999", path = "/v1/apps")
+@FeignClient(name = "feign", url = "http://localhost:7999",
+        path = "/v1/apps", fallback = AppFeignHystrix.class)
 public interface AppFeignClient {
 
     @PostMapping("/add")
